@@ -1,0 +1,574 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Role of Agentic AI — Fitness Buddy</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", -apple-system, system-ui, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 36px 28px 52px;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 38px;
+  }
+  .header-eyebrow {
+    display: inline-block;
+    background: #0c2d6b;
+    border: 1px solid #0f62fe;
+    color: #74b0ff;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .header h1 span { color: #0f62fe; }
+  .header p { color: #8b949e; font-size: 13.5px; max-width: 680px; margin: 0 auto; }
+
+  /* ── Section title ── */
+  .section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #0f62fe;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #21262d;
+  }
+
+  /* ── What is Agentic AI banner ── */
+  .hero-banner {
+    background: linear-gradient(135deg, #0c1f3a 0%, #0a1628 100%);
+    border: 1px solid #1c3a6a;
+    border-left: 4px solid #0f62fe;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .hero-text h2 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .hero-text p  { font-size: 13px; color: #adbdd1; line-height: 1.7; }
+  .hero-vs {
+    background: #051530;
+    border: 1px solid #1c3a6a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .vs-row { display: flex; gap: 12px; align-items: flex-start; font-size: 12px; }
+  .vs-label {
+    background: #0c2d6b;
+    color: #74b0ff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .vs-label.red { background: #3d1010; color: #f87171; }
+  .vs-text { color: #c9d1d9; line-height: 1.5; }
+
+  /* ── 6 Pillars grid ── */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  .pillar-card {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 12px;
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .pillar-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 12px 12px 0 0;
+  }
+  .pc-blue::before   { background: #0f62fe; }
+  .pc-green::before  { background: #22c55e; }
+  .pc-purple::before { background: #a855f7; }
+  .pc-orange::before { background: #f97316; }
+  .pc-cyan::before   { background: #06b6d4; }
+  .pc-pink::before   { background: #ec4899; }
+
+  .pillar-num {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .pc-blue   .pillar-num { color: #0f62fe; }
+  .pc-green  .pillar-num { color: #22c55e; }
+  .pc-purple .pillar-num { color: #a855f7; }
+  .pc-orange .pillar-num { color: #f97316; }
+  .pc-cyan   .pillar-num { color: #06b6d4; }
+  .pc-pink   .pillar-num { color: #ec4899; }
+
+  .pillar-icon  { font-size: 26px; margin-bottom: 8px; }
+  .pillar-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .pillar-desc  { font-size: 12px; color: #8b949e; line-height: 1.6; margin-bottom: 10px; }
+
+  .pillar-example {
+    border-radius: 7px;
+    padding: 8px 11px;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .pc-blue   .pillar-example { background: #0c1f3a; border-left: 3px solid #0f62fe; color: #93c5fd; }
+  .pc-green  .pillar-example { background: #052015; border-left: 3px solid #22c55e; color: #86efac; }
+  .pc-purple .pillar-example { background: #1a0835; border-left: 3px solid #a855f7; color: #d8b4fe; }
+  .pc-orange .pillar-example { background: #1c1407; border-left: 3px solid #f97316; color: #fdba74; }
+  .pc-cyan   .pillar-example { background: #021520; border-left: 3px solid #06b6d4; color: #67e8f9; }
+  .pc-pink   .pillar-example { background: #1f0820; border-left: 3px solid #ec4899; color: #f9a8d4; }
+
+  /* ── Agent cycle ── */
+  .agent-cycle {
+    background: #0c1f3a;
+    border: 1px solid #1c3a6a;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .cycle-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .cycle-step {
+    background: #051530;
+    border: 1.5px solid #1c3a6a;
+    border-radius: 10px;
+    padding: 12px 16px;
+    min-width: 110px;
+    flex: 1;
+    max-width: 140px;
+  }
+  .cs-icon  { font-size: 20px; margin-bottom: 4px; }
+  .cs-name  { font-size: 12px; font-weight: 700; color: #e6edf3; margin-bottom: 3px; }
+  .cs-desc  { font-size: 10.5px; color: #6e7681; line-height: 1.4; }
+  .cycle-arrow { color: #0f62fe; font-size: 22px; font-weight: 700; }
+
+  /* ── IBM Granite highlight ── */
+  .granite-box {
+    background: linear-gradient(135deg, #051530 0%, #0c1f3a 100%);
+    border: 2px solid #0f62fe;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .gb-col h3 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .gb-col ul { list-style: none; padding: 0; }
+  .gb-col ul li {
+    font-size: 12px;
+    color: #adbdd1;
+    padding: 4px 0;
+    border-bottom: 1px solid #1c3a6a;
+    display: flex;
+    gap: 7px;
+  }
+  .gb-col ul li:last-child { border-bottom: none; }
+  .gb-col ul li::before { content: "▸"; color: #0f62fe; flex-shrink: 0; }
+
+  .granite-header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1c3a6a;
+    margin-bottom: 4px;
+  }
+  .granite-logo {
+    background: #0f62fe;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .granite-tagline { font-size: 13.5px; font-weight: 600; color: #c9d1d9; }
+  .granite-sub     { font-size: 11.5px; color: #8b949e; margin-top: 2px; }
+
+  /* ── Agentic vs Traditional table ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    font-size: 12.5px;
+  }
+  .compare-table th {
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #21262d;
+  }
+  .compare-table th:nth-child(1) { color: #8b949e; text-align: left; }
+  .compare-table th:nth-child(2) { background: #1c1407; color: #f97316; text-align: center; border-radius: 8px 8px 0 0; }
+  .compare-table th:nth-child(3) { background: #0c1f3a; color: #74b0ff;  text-align: center; border-radius: 8px 8px 0 0; }
+  .compare-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #21262d;
+    color: #c9d1d9;
+  }
+  .compare-table td:nth-child(2) { background: #0d1007; text-align: center; }
+  .compare-table td:nth-child(3) { background: #050d1a; text-align: center; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .tick   { color: #22c55e; font-weight: 700; }
+  .cross  { color: #f87171; font-weight: 700; }
+  .partial { color: #eab308; }
+
+  /* ── Impact metrics ── */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .metric-card {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+  }
+  .metric-num  { font-size: 26px; font-weight: 800; color: #0f62fe; }
+  .metric-unit { font-size: 12px; color: #8b949e; margin-top: 2px; }
+  .metric-label{ font-size: 11px; color: #6e7681; margin-top: 4px; line-height: 1.4; }
+
+  /* ── Bottom bar ── */
+  .bottom-bar {
+    background: #0f62fe;
+    border-radius: 10px;
+    padding: 12px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .bottom-bar span { font-size: 12.5px; font-weight: 600; color: #fff; }
+  .bottom-bar .right { font-size: 11.5px; color: rgba(255,255,255,0.75); }
+
+  /* ── Footer ── */
+  .mwb {
+    text-align: center;
+    padding-top: 16px;
+    border-top: 1px solid #21262d;
+    font-size: 12px;
+    color: #6e7681;
+  }
+
+  @media (max-width: 700px) {
+    .pillars-grid      { grid-template-columns: 1fr 1fr; }
+    .granite-box       { grid-template-columns: 1fr; }
+    .metrics-row       { grid-template-columns: 1fr 1fr; }
+    .hero-banner       { grid-template-columns: 1fr; }
+    .cycle-steps       { flex-direction: column; align-items: stretch; }
+    .cycle-arrow       { transform: rotate(90deg); text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="header">
+  <div class="header-eyebrow">Problem Statement #14 — Syllabus &amp; Curriculum Design</div>
+  <h1>Role of <span>Agentic AI</span> in Fitness Buddy</h1>
+  <p>How IBM Granite on watsonx.ai acts as an autonomous, context-aware agent to deliver personalised fitness coaching at any time</p>
+</div>
+
+
+<div class="section-title">What is Agentic AI?</div>
+<div class="hero-banner">
+  <div class="hero-text">
+    <h2>Beyond Question &amp; Answer — AI that Reasons &amp; Acts</h2>
+    <p>Agentic AI refers to AI systems that go beyond simple one-shot responses. They <strong style="color:#fff">perceive context</strong>, <strong style="color:#fff">plan multi-step strategies</strong>, <strong style="color:#fff">execute actions</strong>, and <strong style="color:#fff">adapt dynamically</strong> based on user goals — much like a human coach who listens, thinks, then guides.</p>
+    <p style="margin-top:10px">In Fitness Buddy, IBM Granite acts as the intelligent agent — maintaining conversation context, understanding user intent, selecting the right fitness domain, and generating structured, personalized guidance on demand.</p>
+  </div>
+  <div class="hero-vs">
+    <div style="font-size:11px;font-weight:700;color:#8b949e;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Traditional AI vs Agentic AI</div>
+    <div class="vs-row">
+      <span class="vs-label red">Traditional</span>
+      <span class="vs-text">Returns a fixed, static answer. No memory, no context, no adaptation.</span>
+    </div>
+    <div class="vs-row">
+      <span class="vs-label">Agentic</span>
+      <span class="vs-text">Maintains conversation history, infers user goals, adapts tone &amp; depth, and proactively structures actionable plans.</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="agent-cycle">
+  <div class="section-title" style="justify-content:center;margin-bottom:6px">The Agentic AI Loop in Fitness Buddy</div>
+  <div class="cycle-steps">
+    <div class="cycle-step">
+      <div class="cs-icon">👁️</div>
+      <div class="cs-name">Perceive</div>
+      <div class="cs-desc">Reads user message + conversation history (last 6 turns)</div>
+    </div>
+    <div class="cycle-arrow">→</div>
+    <div class="cycle-step">
+      <div class="cs-icon">🧠</div>
+      <div class="cs-name">Understand</div>
+      <div class="cs-desc">IBM Granite identifies intent: workout / nutrition / habit / motivation</div>
+    </div>
+    <div class="cycle-arrow">→</div>
+    <div class="cycle-step">
+      <div class="cs-icon">📐</div>
+      <div class="cs-name">Plan</div>
+      <div class="cs-desc">Selects persona + domain prompt + output structure</div>
+    </div>
+    <div class="cycle-arrow">→</div>
+    <div class="cycle-step">
+      <div class="cs-icon">⚡</div>
+      <div class="cs-name">Generate</div>
+      <div class="cs-desc">Produces personalised, structured fitness guidance</div>
+    </div>
+    <div class="cycle-arrow">→</div>
+    <div class="cycle-step">
+      <div class="cs-icon">🔁</div>
+      <div class="cs-name">Learn</div>
+      <div class="cs-desc">Response stored in session history — informs next turn</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section-title">6 Pillars of Agentic AI in Fitness Buddy</div>
+<div class="pillars-grid">
+
+  <div class="pillar-card pc-blue">
+    <div class="pillar-num">PILLAR 01</div>
+    <div class="pillar-icon">🧭</div>
+    <div class="pillar-title">Goal-Oriented Behaviour</div>
+    <div class="pillar-desc">The AI doesn't just answer — it works toward the user's stated fitness goal (weight loss, muscle gain, endurance) across multiple conversation turns.</div>
+    <div class="pillar-example">User says "I want to lose 5kg" → IBM Granite aligns every subsequent response — workouts, meals, habits — to that goal.</div>
+  </div>
+
+  <div class="pillar-card pc-green">
+    <div class="pillar-num">PILLAR 02</div>
+    <div class="pillar-icon">🧵</div>
+    <div class="pillar-title">Contextual Memory</div>
+    <div class="pillar-desc">The agent maintains a rolling window of the last 6 conversation exchanges, enabling coherent multi-turn dialogue rather than isolated Q&amp;A.</div>
+    <div class="pillar-example">chatHistory[] is injected into every IBM Granite prompt — the AI "remembers" what was said earlier in the session.</div>
+  </div>
+
+  <div class="pillar-card pc-purple">
+    <div class="pillar-num">PILLAR 03</div>
+    <div class="pillar-icon">🎭</div>
+    <div class="pillar-title">Persona &amp; Role Adoption</div>
+    <div class="pillar-desc">IBM Granite is given a detailed system persona — "Fitness Buddy, a friendly, knowledgeable fitness coach" — and maintains that role throughout all interactions.</div>
+    <div class="pillar-example">SYSTEM_PROMPT defines expertise areas, tone, constraints (no medical diagnosis), and output style for all generations.</div>
+  </div>
+
+  <div class="pillar-card pc-orange">
+    <div class="pillar-num">PILLAR 04</div>
+    <div class="pillar-icon">🔀</div>
+    <div class="pillar-title">Dynamic Task Routing</div>
+    <div class="pillar-desc">The agent automatically identifies which fitness domain the user needs (workout / nutrition / motivation / habit) and routes to the appropriate specialised prompt.</div>
+    <div class="pillar-example">4 dedicated API routes each inject domain-specific context: workout params, dietary preferences, habit challenges — before calling Granite.</div>
+  </div>
+
+  <div class="pillar-card pc-cyan">
+    <div class="pillar-num">PILLAR 05</div>
+    <div class="pillar-icon">🏗️</div>
+    <div class="pillar-title">Structured Output Generation</div>
+    <div class="pillar-desc">Rather than free-form text, the agent is instructed to produce structured, actionable plans — numbered steps, sets/reps tables, weekly schedules — formatted for real-world use.</div>
+    <div class="pillar-example">Prompts explicitly request: warm-up / main workout / cool-down sections, calorie estimates, habit week-by-week progression, etc.</div>
+  </div>
+
+  <div class="pillar-card pc-pink">
+    <div class="pillar-num">PILLAR 06</div>
+    <div class="pillar-icon">🛡️</div>
+    <div class="pillar-title">Responsible AI Guardrails</div>
+    <div class="pillar-desc">The agent enforces ethical boundaries — it will not diagnose medical conditions, will not recommend extreme diets, and always advises consulting a healthcare professional.</div>
+    <div class="pillar-example">System prompt hard-codes: "Do NOT provide medical diagnoses or prescribe medications. Focus on general wellness, not extreme dieting."</div>
+  </div>
+
+</div>
+
+
+<div class="section-title">IBM Granite as the Intelligence Core</div>
+<div class="granite-box">
+  <div class="granite-header">
+    <div class="granite-logo">IBM Granite</div>
+    <div>
+      <div class="granite-tagline">ibm/granite-3-8b-instruct — The Brain of Fitness Buddy</div>
+      <div class="granite-sub">Hosted on IBM Cloud watsonx.ai · Free Lite Tier · us-south endpoint</div>
+    </div>
+  </div>
+
+  <div class="gb-col">
+    <h3>🤖 Agentic Capabilities</h3>
+    <ul>
+      <li>Instruction-following at scale</li>
+      <li>Multi-turn conversation reasoning</li>
+      <li>Domain adaptation (fitness/nutrition)</li>
+      <li>Structured output formatting</li>
+      <li>Safety &amp; alignment built-in</li>
+    </ul>
+  </div>
+
+  <div class="gb-col">
+    <h3>⚙️ How it's Invoked</h3>
+    <ul>
+      <li>REST POST to /ml/v1/text/generation</li>
+      <li>IBM IAM Bearer token auth</li>
+      <li>512 max_new_tokens per call</li>
+      <li>Greedy decoding + temp 0.75</li>
+      <li>Repetition penalty 1.1</li>
+    </ul>
+  </div>
+
+  <div class="gb-col">
+    <h3>📋 Prompt Architecture</h3>
+    <ul>
+      <li>System persona (role + rules)</li>
+      <li>Conversation history context</li>
+      <li>Domain-specific parameters</li>
+      <li>Structured output instructions</li>
+      <li>User message appended last</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="section-title">Agentic AI vs Traditional Fitness App</div>
+<table class="compare-table">
+  <thead>
+    <tr>
+      <th>Capability</th>
+      <th>Traditional Fitness App</th>
+      <th>Fitness Buddy (Agentic AI)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Personalisation</td>
+      <td><span class="cross">✗</span> Fixed templates only</td>
+      <td><span class="tick">✓</span> Generated for each user's exact inputs</td>
+    </tr>
+    <tr>
+      <td>Conversation Memory</td>
+      <td><span class="cross">✗</span> Each session is independent</td>
+      <td><span class="tick">✓</span> Maintains rolling context across turns</td>
+    </tr>
+    <tr>
+      <td>Multi-domain Reasoning</td>
+      <td><span class="cross">✗</span> Single feature silo</td>
+      <td><span class="tick">✓</span> Seamlessly links workout, diet &amp; habits</td>
+    </tr>
+    <tr>
+      <td>Natural Language Input</td>
+      <td><span class="cross">✗</span> Form fields / dropdowns only</td>
+      <td><span class="tick">✓</span> Free-form conversational input</td>
+    </tr>
+    <tr>
+      <td>Adaptive Guidance</td>
+      <td><span class="partial">~</span> Basic if/else rules</td>
+      <td><span class="tick">✓</span> LLM reasoning adapts to user nuance</td>
+    </tr>
+    <tr>
+      <td>24/7 Availability</td>
+      <td><span class="tick">✓</span> Static content always available</td>
+      <td><span class="tick">✓</span> AI available on-demand, any time</td>
+    </tr>
+    <tr>
+      <td>Goal-aligned Planning</td>
+      <td><span class="cross">✗</span> Generic programs</td>
+      <td><span class="tick">✓</span> Plans built around stated user goal</td>
+    </tr>
+    <tr>
+      <td>Responsible AI</td>
+      <td><span class="partial">~</span> Disclaimer text</td>
+      <td><span class="tick">✓</span> Guardrails enforced in every generation</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<div class="section-title">Impact of Agentic AI</div>
+<div class="metrics-row">
+  <div class="metric-card">
+    <div class="metric-num">4</div>
+    <div class="metric-unit">Specialised Agents</div>
+    <div class="metric-label">Chat · Workout · Nutrition · Motivation</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-num">6</div>
+    <div class="metric-unit">Context Turns</div>
+    <div class="metric-label">Rolling memory window per session</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-num">512</div>
+    <div class="metric-unit">Tokens / Response</div>
+    <div class="metric-label">IBM Granite max output per generation</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-num">0</div>
+    <div class="metric-unit">Rigid Scripts</div>
+    <div class="metric-label">Every response is dynamically reasoned, not hardcoded</div>
+  </div>
+</div>
+
+
+<div class="bottom-bar">
+  <span>🏋️ Fitness Buddy — Agentic AI powered by IBM Granite on IBM Cloud watsonx.ai</span>
+  <span class="right">Problem Statement #14  |  IBM Cloud Lite Tier (Mandatory)</span>
+</div>
+
+<div class="mwb">Made with IBM Bob</div>
+</body>
+</html>
